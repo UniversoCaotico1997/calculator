@@ -1,0 +1,224 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg: #0a0f0a;
+    --panel: #0e160e;
+    --border: #1f4f1f;
+    --green: #39ff14;
+    --green-dim: #1a7a08;
+    --green-glow: rgba(57, 255, 20, 0.25);
+    --amber: #ffb800;
+    --red: #ff3c3c;
+    --text: #c8f5c8;
+}
+
+body {
+    min-height: 100vh;
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Share Tech Mono', monospace;
+    background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(57, 255, 20, 0.015) 2px, rgba(57, 255, 20, 0.015) 4px);
+}
+
+.calculator {
+    background: var(--panel);
+    border: 2px solid var(--border);
+    border-radius: 4px;
+    padding: 40px 36px;
+    width: 380px;
+    box-shadow: 0 0 40px rgba(57, 255, 20, 0.08), inset 0 0 60px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+.calculator::before {
+    content: '[ CALC-2000 ]';
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--panel);
+    color: var(--green-dim);
+    font-family: 'Orbitron', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    padding: 0 10px;
+}
+
+h1 {
+    font-family: 'Orbitron', monospace;
+    color: var(--green);
+    font-size: 18px;
+    letter-spacing: 4px;
+    text-align: center;
+    margin-bottom: 32px;
+    text-shadow: 0 0 10px var(--green);
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+.input-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.input-row label {
+    color: var(--green-dim);
+    font-size: 12px;
+    letter-spacing: 2px;
+    width: 28px;
+    flex-shrink: 0;
+}
+
+input[type="number"] {
+    flex: 1;
+    background: #050a05;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    color: var(--green);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 18px;
+    padding: 10px 14px;
+    outline: none;
+    caret-color: var(--green);
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input[type="number"]:focus {
+    border-color: var(--green);
+    box-shadow: 0 0 10px var(--green-glow);
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+
+.divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 4px 0 20px;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-bottom: 28px;
+}
+
+button {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 20px;
+    padding: 14px 0;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.12s ease;
+    background: #0a150a;
+    color: var(--text);
+    letter-spacing: 1px;
+}
+
+button:hover {
+    background: var(--green-glow);
+    border-color: var(--green);
+    color: var(--green);
+    box-shadow: 0 0 12px var(--green-glow);
+}
+
+button:active {
+    transform: scale(0.95);
+    box-shadow: none;
+}
+
+button.op-btn {
+    color: var(--green);
+}
+
+button.reset-btn {
+    grid-column: span 4;
+    font-size: 13px;
+    letter-spacing: 3px;
+    color: var(--red);
+    border-color: rgba(255, 60, 60, 0.3);
+    background: rgba(255, 60, 60, 0.04);
+    padding: 12px 0;
+}
+
+button.reset-btn:hover {
+    background: rgba(255, 60, 60, 0.12);
+    border-color: var(--red);
+    color: var(--red);
+    box-shadow: 0 0 12px rgba(255, 60, 60, 0.2);
+}
+
+.answer-box {
+    background: #050a05;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 16px 18px;
+    min-height: 64px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.answer-label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--green-dim);
+    margin-bottom: 6px;
+}
+
+h3 {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 28px;
+    color: var(--green);
+    text-shadow: 0 0 14px var(--green);
+    word-break: break-all;
+    transition: all 0.2s;
+}
+
+h3.error {
+    color: var(--red);
+    text-shadow: 0 0 14px rgba(255, 60, 60, 0.5);
+    font-size: 16px;
+}
+
+h3.placeholder {
+    color: var(--green-dim);
+    text-shadow: none;
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+
+@keyframes flicker {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.85;
+    }
+}
+
+h3:not(.placeholder):not(.error) {
+    animation: flicker 3s infinite;
+}

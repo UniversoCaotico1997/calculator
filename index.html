@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mini Calculator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@700&display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
+    <script src="./app.js" defer></script>
+</head>
+
+<body>
+    <div class="calculator">
+        <h1>CALCULATOR</h1>
+
+        <div class="input-group">
+            <div class="input-row">
+                <label>N1</label>
+                <input type="number" id="num1" placeholder="0" />
+            </div>
+            <div class="input-row">
+                <label>N2</label>
+                <input type="number" id="num2" placeholder="0" />
+            </div>
+        </div>
+
+        <hr class="divider" />
+
+        <div class="buttons">
+            <button class="op-btn" onclick="calculate('+')">+</button>
+            <button class="op-btn" onclick="calculate('-')">-</button>
+            <button class="op-btn" onclick="calculate('*')">x</button>
+            <button class="op-btn" onclick="calculate('/')">÷</button>
+            <button class="reset-btn" onclick="resetCalc()">[ RESET ]</button>
+        </div>
+
+        <div class="answer-box">
+            <div class="answer-label">OUTPUT</div>
+            <h3 id="answer" class="placeholder">AWAITING INPUT_</h3>
+        </div>
+    </div>
+</body>
+
+</html>
